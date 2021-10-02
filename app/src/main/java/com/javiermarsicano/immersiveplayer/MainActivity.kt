@@ -1,7 +1,6 @@
 package com.javiermarsicano.immersiveplayer
 
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -11,7 +10,9 @@ import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.javiermarsicano.immersiveplayer.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+const val videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
+
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var player: SimpleExoPlayer? = null
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             player = SimpleExoPlayer.Builder(this).build()
         }
 
-        val uri = Uri.parse("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4")
+        val uri = Uri.parse(videoUrl)
         val mediaSource = buildMediaSource(uri)
         player?.setMediaSource(mediaSource)
         player?.prepare()
